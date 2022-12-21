@@ -7,8 +7,8 @@ import com.example.CreditApplicationSystem.dto.UserViewDTO;
 import java.util.List;
 
 public interface UserService {
-//    BigDecimal getCreditScoreCalculate(@PathVariable Long citizenId);
-    UserViewDTO createUser(UserCreateDTO userCreateDTO);
-    UserViewDTO updateUser(UserUpdateDTO userUpdateDTO);
+    UserViewDTO createClient(UserCreateDTO userCreateDTO);
+    UserViewDTO updateClient(Integer Id,UserUpdateDTO userUpdateDTO);
+    UserViewDTO deleteClient(Integer Id);
     List<UserViewDTO> getClientList();
 }

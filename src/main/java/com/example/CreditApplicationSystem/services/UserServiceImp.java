@@ -6,8 +6,13 @@ import com.example.CreditApplicationSystem.dto.UserViewDTO;
 import com.example.CreditApplicationSystem.entities.Client;
 import com.example.CreditApplicationSystem.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
+
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,7 +28,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public UserViewDTO createUser(UserCreateDTO userCreateDTO) {
+    public UserViewDTO createClient(UserCreateDTO userCreateDTO) {
         final Client client=new Client();
         client.setCitizenId(userCreateDTO.getCitizenId());
         client.setName(userCreateDTO.getName());
@@ -37,9 +42,36 @@ public class UserServiceImp implements UserService {
         return UserViewDTO.of(client);
     }
 
+    /**yeni deger gelmisse alsın ama aksi halde oldugu gibi kalsın.su hali ile null atıyor.**/
     @Override
-    public UserViewDTO updateUser(UserUpdateDTO userUpdateDTO) {
-        return null;
+    public UserViewDTO updateClient(Integer Id,UserUpdateDTO userUpdateDTO) {
+        final Client client=userRepository.findById(Id).orElseThrow(()-> new NotFoundException("there is no client"));
+        client.setName(userUpdateDTO.getName());
+        client.setLastName(userUpdateDTO.getLastName());
+        client.setIncome(userUpdateDTO.getIncome());
+        client.setDeposit(userUpdateDTO.getDeposit());
+        client.setPhoneNumber(userUpdateDTO.getPhoneNumber());
+        final Client updatedClient=userRepository.save(client);
+        return UserViewDTO.of(updatedClient);
+    }
+
+    @Override
+    public UserViewDTO deleteClient(Integer Id) {
+        Client client = userRepository.findById(Id).orElseThrow(() -> new RuntimeException("there is no client"));
+        // otomatik olarak isPresent i kontrol ediyor true ise get ile veriyi alıyor direk kasi halde exp fırlatıyor.
+        client.setActive(false);
+        userRepository.save(client);
+//        Optional<Client> client = userRepository.findById(Id); // null pointer exc yememek için.
+//        if(client.isPresent()){
+//            client.get().setActive(false);
+//            userRepository.save(client.get());
+//        }
+//
+//        else{
+//            throw new RuntimeException("there is no client");
+//        }
+
+        return UserViewDTO.of(client);
     }
 
     @Override

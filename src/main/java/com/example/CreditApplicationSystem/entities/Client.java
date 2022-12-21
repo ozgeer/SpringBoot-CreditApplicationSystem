@@ -8,9 +8,10 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name="Client",uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"citizenId"},name = "ux_citizen_id")
-})
+@Table(name="Client")
+//,uniqueConstraints = {
+//        @UniqueConstraint(columnNames = {"citizenId"},name = "ux_citizen_id")
+//})
 @Data
 @RequiredArgsConstructor
 
