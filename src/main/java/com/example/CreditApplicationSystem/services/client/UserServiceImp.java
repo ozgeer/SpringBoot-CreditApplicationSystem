@@ -19,7 +19,7 @@ public class UserServiceImp implements UserService {
     private final UserRepository userRepository;
 
 
-    public static Integer getCreditScoreCalculate(Long citizenId){
+    public static Integer getCreditScoreCalculate(String citizenId){
         Integer score=(int) (Math.random()*1500);
         return Integer.valueOf(score);
     }

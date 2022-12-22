@@ -2,10 +2,9 @@ package com.example.CreditApplicationSystem.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @Entity
 @Table(name="Client")
@@ -20,17 +19,16 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
-
-    @Column(name="citizenId",nullable = false,length = 11)
-    private Long citizenId;
+    @Column(name="citizen_id",nullable = false,length = 11)
+    private String citizenId;
 
     @Column(name="name",nullable = false,length = 50)
     private String name;
 
-    @Column(name="lastName",nullable = false,length = 50)
+    @Column(name="last_name",nullable = false,length = 50)
     private String lastName;
 
-    @Column(name="phoneNumber",nullable = true,length = 20)
+    @Column(name="phone_number",nullable = true,length = 20)
     private String phoneNumber;
 
     @Column(name="income")
@@ -39,12 +37,12 @@ public class Client {
     @Column(name="deposit")
     private Integer deposit;
 
-    @Column(name="birthDate")
+    @Column(name="birth_date")
     private LocalDate birthDate;
 
-    @Column(name="creditScore")
+    @Column(name="credit_score")
     private int creditScore;
 
-    @Column(name="isActive")
+    @Column(name="is_active")
     private boolean isActive=true;
 }
