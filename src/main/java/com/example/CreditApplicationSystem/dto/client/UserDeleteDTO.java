@@ -1,4 +1,4 @@
-package com.example.CreditApplicationSystem.dto;
+package com.example.CreditApplicationSystem.dto.client;
 
 import lombok.Data;
 

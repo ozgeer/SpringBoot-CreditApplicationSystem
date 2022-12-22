@@ -1,8 +1,8 @@
-package com.example.CreditApplicationSystem.services;
+package com.example.CreditApplicationSystem.services.client;
 
-import com.example.CreditApplicationSystem.dto.UserCreateDTO;
-import com.example.CreditApplicationSystem.dto.UserUpdateDTO;
-import com.example.CreditApplicationSystem.dto.UserViewDTO;
+import com.example.CreditApplicationSystem.dto.client.UserCreateDTO;
+import com.example.CreditApplicationSystem.dto.client.UserUpdateDTO;
+import com.example.CreditApplicationSystem.dto.client.UserViewDTO;
 
 import java.util.List;
 

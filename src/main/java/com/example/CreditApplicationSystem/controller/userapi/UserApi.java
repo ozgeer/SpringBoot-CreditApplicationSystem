@@ -1,22 +1,18 @@
-package com.example.CreditApplicationSystem.controller;
+package com.example.CreditApplicationSystem.controller.userapi;
 
-import com.example.CreditApplicationSystem.dto.UserCreateDTO;
-import com.example.CreditApplicationSystem.dto.UserUpdateDTO;
-import com.example.CreditApplicationSystem.dto.UserViewDTO;
-import com.example.CreditApplicationSystem.entities.Client;
-import com.example.CreditApplicationSystem.services.UserService;
+import com.example.CreditApplicationSystem.dto.client.UserCreateDTO;
+import com.example.CreditApplicationSystem.dto.client.UserUpdateDTO;
+import com.example.CreditApplicationSystem.dto.client.UserViewDTO;
+import com.example.CreditApplicationSystem.services.client.UserService;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/")
+@RequestMapping("/user")
 public class UserApi {
 
     private final UserService userService;

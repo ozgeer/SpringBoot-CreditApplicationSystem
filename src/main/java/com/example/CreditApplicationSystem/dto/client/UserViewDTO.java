@@ -1,4 +1,4 @@
-package com.example.CreditApplicationSystem.dto;
+package com.example.CreditApplicationSystem.dto.client;
 
 import com.example.CreditApplicationSystem.entities.Client;
 import lombok.AllArgsConstructor;
