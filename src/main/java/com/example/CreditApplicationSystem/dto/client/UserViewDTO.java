@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class UserViewDTO implements Serializable {
     private String name;
     private String lastName;
-    private String citizenId;
+    private Long citizenId;
 //    private String result;
 //    private Integer limit;
 

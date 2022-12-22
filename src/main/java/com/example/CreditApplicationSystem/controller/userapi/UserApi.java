@@ -27,25 +27,26 @@ public class UserApi {
 //        return score;
 //    }
 
-    @GetMapping("/user/clientList")
+    @GetMapping("/clientList")
     public ResponseEntity<List<UserViewDTO>> getClientList(){
     final List<UserViewDTO> clientList=userService.getClientList();
      return ResponseEntity.ok(clientList);
     }
 
-    @PostMapping("/user/create")
+    @PostMapping("/create")
+//    @ApiOperation()
     public ResponseEntity<UserViewDTO> createClient(@RequestBody UserCreateDTO userCreateDTO){
         final UserViewDTO client=userService.createClient(userCreateDTO);
         return ResponseEntity.ok(client);
     }
 
-    @PutMapping("/user/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<UserViewDTO> updateClient(@PathVariable("id") Integer Id,@RequestBody UserUpdateDTO userUpdateDTO){
         final UserViewDTO client=userService.updateClient(Id,userUpdateDTO);
         return ResponseEntity.ok(client);
     }
 
-    @DeleteMapping("/user/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<UserViewDTO> deleteClient(@PathVariable("id") Integer Id){
         final UserViewDTO client=userService.deleteClient(Id);
         return ResponseEntity.ok(client);

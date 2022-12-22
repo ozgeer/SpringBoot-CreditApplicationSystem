@@ -20,7 +20,7 @@ public class Client {
     private Integer Id;
 
     @Column(name="citizen_id",nullable = false,length = 11)
-    private String citizenId;
+    private Long citizenId;
 
     @Column(name="name",nullable = false,length = 50)
     private String name;

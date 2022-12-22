@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Data
 public class UserCreateDTO {
-    private String citizenId;
+    private Long citizenId;
     private String name;
     private String lastname;
     private String phoneNumber;
