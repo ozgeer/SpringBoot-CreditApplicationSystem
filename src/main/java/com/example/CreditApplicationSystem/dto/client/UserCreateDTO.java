@@ -1,7 +1,5 @@
 package com.example.CreditApplicationSystem.dto.client;
-
 import lombok.Data;
-
 import java.time.LocalDate;
 
 @Data

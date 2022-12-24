@@ -53,13 +53,10 @@ public class UserApi {
 
     }
 
-    @GetMapping("/user/credit_apply")
-    public ResponseEntity<CreditApplyResponseDTO> applyCredit(CreditApplyDTO creditApplyDTO){
+    @PostMapping ("/credit_apply")
+    public ResponseEntity<CreditApplyResponseDTO> applyCredit(@RequestBody CreditApplyDTO creditApplyDTO){
         final CreditApplyResponseDTO response=creditService.creditApply(creditApplyDTO);
         return ResponseEntity.ok(response);
     }
-
-
-
 
 }

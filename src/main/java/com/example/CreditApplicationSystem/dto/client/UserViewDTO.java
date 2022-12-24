@@ -3,7 +3,6 @@ package com.example.CreditApplicationSystem.dto.client;
 import com.example.CreditApplicationSystem.entities.Client;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
 import java.io.Serializable;
 @Getter
 @AllArgsConstructor
@@ -17,8 +16,4 @@ public class UserViewDTO implements Serializable {
     public static UserViewDTO of(Client client){
         return new UserViewDTO (client.getName(),client.getLastName(),client.getCitizenId());
     }
-
-
-
-
 }

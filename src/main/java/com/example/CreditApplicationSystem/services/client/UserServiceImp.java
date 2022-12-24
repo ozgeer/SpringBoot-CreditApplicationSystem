@@ -16,7 +16,6 @@ public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
 
-
     public static Integer getCreditScoreCalculate(Long citizenId){
         Integer score=(int) (Math.random()*1500);
         return Integer.valueOf(score);
@@ -24,7 +23,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserViewDTO createClient(UserCreateDTO userCreateDTO) {
-        final Client client=new Client();
+        Client client=new Client();
         client.setCitizenId(userCreateDTO.getCitizenId());
         client.setName(userCreateDTO.getName());
         client.setLastName(userCreateDTO.getLastname());
@@ -37,10 +36,9 @@ public class UserServiceImp implements UserService {
         return UserViewDTO.of(client);
     }
 
-    /**yeni deger gelmisse alsın ama aksi halde oldugu gibi kalsın.su hali ile null atıyor.**/
     @Override
     public UserViewDTO updateClient(Integer Id, UserUpdateDTO userUpdateDTO) {
-        final Client client=userRepository.findById(Id).orElseThrow(()-> new RuntimeException("there is no client"));
+        Client client=userRepository.findById(Id).orElseThrow(()-> new RuntimeException("there is no client"));
         client.setName(userUpdateDTO.getName());
         client.setLastName(userUpdateDTO.getLastName());
         client.setIncome(userUpdateDTO.getIncome());
