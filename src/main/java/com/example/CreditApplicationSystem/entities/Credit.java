@@ -1,9 +1,8 @@
 package com.example.CreditApplicationSystem.entities;
 
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity

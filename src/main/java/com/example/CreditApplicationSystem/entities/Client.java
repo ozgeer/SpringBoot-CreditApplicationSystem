@@ -1,16 +1,15 @@
 package com.example.CreditApplicationSystem.entities;
 
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 
 @Entity
 @Table(name="Client")
 //,uniqueConstraints = {
-//        @UniqueConstraint(columnNames = {"citizenId"},name = "ux_citizen_id")
-//})
+//        @UniqueConstraint(columnNames = {"citizenId"},name = "ux_citizen_id")})
 @Data
 @RequiredArgsConstructor
 
