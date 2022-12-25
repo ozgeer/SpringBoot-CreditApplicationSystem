@@ -5,6 +5,7 @@ import com.example.CreditApplicationSystem.dto.client.UserUpdateDTO;
 import com.example.CreditApplicationSystem.dto.client.UserViewDTO;
 import com.example.CreditApplicationSystem.entities.Client;
 import com.example.CreditApplicationSystem.repository.UserRepository;
+import com.example.CreditApplicationSystem.exception.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -38,7 +39,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserViewDTO updateClient(Integer Id, UserUpdateDTO userUpdateDTO) {
-        Client client=userRepository.findById(Id).orElseThrow(()-> new RuntimeException("there is no client"));
+        Client client=userRepository.findById(Id).orElseThrow(()-> new ClientNotFoundException(Id));
         client.setName(userUpdateDTO.getName());
         client.setLastName(userUpdateDTO.getLastName());
         client.setIncome(userUpdateDTO.getIncome());
@@ -50,7 +51,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserViewDTO deleteClient(Integer Id) {
-        Client client = userRepository.findById(Id).orElseThrow(() -> new RuntimeException("there is no client"));
+        Client client = userRepository.findById(Id).orElseThrow(() -> new ClientNotFoundException(Id));
         // otomatik olarak isPresent i kontrol ediyor true ise get ile veriyi alıyor direk kasi halde exp fırlatıyor.
         client.setActive(false);
         userRepository.save(client);
