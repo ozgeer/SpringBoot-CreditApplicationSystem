@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum IncomeBelow10000 {
-    depositmultiple(0.2);
+public enum IncomeBelowOneThousand {
+    depositmultiple(0.1);
     private double value;
 
 }
