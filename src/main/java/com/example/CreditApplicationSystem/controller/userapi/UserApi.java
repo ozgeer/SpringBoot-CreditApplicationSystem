@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/v1/user")
 @Tag(name="CLIENT OPERATIONS")
 public class UserApi {
     private final UserService userService;
@@ -28,43 +28,43 @@ public class UserApi {
 //        return score;
 //    }
 
-    @GetMapping("/clientList")
+    @GetMapping("/get-client-list")
     @Operation(summary= "Returns all client")
     public ResponseEntity<List<UserViewDTO>> getClientList(){
     final List<UserViewDTO> clientList=userService.getClientList();
      return ResponseEntity.ok(clientList);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/register")
     @Operation(summary = "Creates new account")
     public ResponseEntity<UserViewDTO> createClient(@RequestBody UserCreateDTO userCreateDTO){
         final UserViewDTO client=userService.createClient(userCreateDTO);
         return ResponseEntity.ok(client);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     @Operation(summary ="Updates the account information")
-    public ResponseEntity<UserViewDTO> updateClient(@PathVariable("id") Integer Id,@RequestBody UserUpdateDTO userUpdateDTO){
+    public ResponseEntity<UserViewDTO> updateClient(@PathVariable("id") Long Id,@RequestBody UserUpdateDTO userUpdateDTO){
         final UserViewDTO client=userService.updateClient(Id,userUpdateDTO);
         return ResponseEntity.ok(client);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     @Operation(summary = "Deactives the account")
-    public ResponseEntity<UserViewDTO> deleteClient(@PathVariable("id") Integer Id){
+    public ResponseEntity<UserViewDTO> deleteClient(@PathVariable("id") Long Id){
         final UserViewDTO client=userService.deleteClient(Id);
         return ResponseEntity.ok(client);
 
     }
 
-    @PostMapping ("/credit_apply")
+    @PostMapping ("/credit-apply")
     @Operation(summary = "Saves the loan application in the database")
     public ResponseEntity<?> applyCredit(@RequestBody CreditApplyDTO creditApplyDTO){
         creditService.creditApply(creditApplyDTO);
         return ResponseEntity.ok(new GenericResponse("Your application has been received"));
     }
 
-    @GetMapping("credit_apply_response/")
+    @GetMapping("credit-apply-response")
     @Operation(summary = "Returns result of loan application")
     public List<UserViewDTO> creditResult(Long id){
         creditService.creditApplyResponse(id);
