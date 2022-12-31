@@ -8,6 +8,6 @@ import java.math.BigDecimal;
 @Data
 public class CreditApplyDTO {
     Client client;
-    BigDecimal income;
-    BigDecimal deposit;
+    Double income;
+    Double deposit;
 }

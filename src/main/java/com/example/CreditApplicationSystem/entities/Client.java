@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Long Id;
 
     @Column(name="citizen_id",nullable = false,length = 11)
     private String citizenId;
@@ -29,17 +29,8 @@ public class Client {
     @Column(name="phone_number",nullable = true,length = 20)
     private String phoneNumber;
 
-    @Column(name="income")
-    private Double income;
-
-    @Column(name="deposit")
-    private Double deposit;
-
     @Column(name="birth_date")
     private LocalDate birthDate;
-
-//    @Column(name="credit_score")
-//    private int creditScore;
 
     @Column(name="is_active")
     private boolean isActive=true;
