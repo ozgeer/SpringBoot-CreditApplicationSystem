@@ -36,8 +36,8 @@ public class CreditServiceImp implements CreditService {
         Client client=userServiceImp.findCustomerByIdentityNo(citizenId);
         Credit credit=creditRepository.findCreditByClient(client);
 
-        Double deposit = client.getDeposit();
-        Double income=client.getIncome();
+        Double deposit = credit.getDeposit();
+        Double income=credit.getIncome();
         Integer creditScore=credit.getCreditScore();
 
         CreditApplyResponseDTO response=getCreditLimit(client,creditScore,income,deposit);
@@ -45,7 +45,7 @@ public class CreditServiceImp implements CreditService {
 
     }
 
-    public CreditApplyResponseDTO getCreditLimit(Client client,Integer creditScore,Double income,Double deposit){
+    public CreditApplyResponseDTO getCreditLimit(Client client, Integer creditScore, Double income, Double deposit){
       Type type=new  Type();
       if(creditScore<500){
         type.setGivenCreditType(new CreditScoreBelowFiveHundred());

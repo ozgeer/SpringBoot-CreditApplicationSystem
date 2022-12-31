@@ -4,6 +4,7 @@ import com.example.CreditApplicationSystem.dto.client.UserCreateDTO;
 import com.example.CreditApplicationSystem.dto.client.UserUpdateDTO;
 import com.example.CreditApplicationSystem.dto.client.UserViewDTO;
 import com.example.CreditApplicationSystem.dto.credit.CreditApplyDTO;
+import com.example.CreditApplicationSystem.dto.credit.CreditApplyResponseDTO;
 import com.example.CreditApplicationSystem.services.client.UserService;
 import com.example.CreditApplicationSystem.services.credit.CreditService;
 import com.example.CreditApplicationSystem.shared.GenericResponse;
@@ -64,11 +65,11 @@ public class UserApi {
         return ResponseEntity.ok(new GenericResponse("Your application has been received"));
     }
 
-    @GetMapping("credit-apply-response")
+    @GetMapping("credit-apply-response/{citizenId}")
     @Operation(summary = "Returns result of loan application")
-    public List<UserViewDTO> creditResult(Long id){
-        creditService.creditApplyResponse(id);
-        return null;
+    public ResponseEntity<CreditApplyResponseDTO> creditResult(@PathVariable("citizenId") String citizenId){
+        final CreditApplyResponseDTO response=creditService.creditApplyEvaluation(citizenId);
+        return ResponseEntity.ok(response);
     }
 
 
