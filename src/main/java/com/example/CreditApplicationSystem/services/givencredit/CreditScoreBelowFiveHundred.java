@@ -1,10 +1,11 @@
 package com.example.CreditApplicationSystem.services.givencredit;
-
 import com.example.CreditApplicationSystem.dto.credit.CreditApplyResponseDTO;
 
-public class GivenCreditScoreAboveOneThousand implements GivenCreditType {
+import java.util.logging.*;
+
+public class CreditScoreBelowFiveHundred implements GivenCreditType {
     @Override
-    public CreditApplyResponseDTO getCreditLimit(Double deposit, Double income) {
+    public CreditApplyResponseDTO getCreditLimit(Double income, Double deposit) {
         return null;
     }
 }
