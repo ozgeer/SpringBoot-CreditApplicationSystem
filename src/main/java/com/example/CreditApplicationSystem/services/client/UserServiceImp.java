@@ -17,9 +17,11 @@ public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
 
-    public static Integer getCreditScoreCalculate(Long citizenId){
-        Integer score=(int) (Math.random()*1500);
-        return Integer.valueOf(score);
+
+
+    @Override
+    public List<UserViewDTO> getClientList() {
+        return userRepository.findAll().stream().filter(x->x.isActive()==true).map(UserViewDTO::of).collect(Collectors.toList());
     }
 
     @Override
@@ -27,18 +29,19 @@ public class UserServiceImp implements UserService {
         Client client=new Client();
         client.setCitizenId(userCreateDTO.getCitizenId());
         client.setName(userCreateDTO.getName());
-        client.setLastName(userCreateDTO.getLastname());
+        client.setLastName(userCreateDTO.getLastName());
         client.setPhoneNumber(userCreateDTO.getPhoneNumber());
         client.setIncome(userCreateDTO.getIncome());
         client.setDeposit(userCreateDTO.getDeposit());
         client.setBirthDate(userCreateDTO.getBirthDate());
-        client.setCreditScore(UserServiceImp.getCreditScoreCalculate(userCreateDTO.getCitizenId()));
+//        client.setCreditScore(UserServiceImp.getCreditScoreCalculate(userCreateDTO.getCitizenId()));
         userRepository.save(client);
         return UserViewDTO.of(client);
     }
-
+        //KENDIME NOT:
+        //if(userUpdateDTO.getName()!=null) durumunu tumu ıcın yapmak ??? bunu bır sor.
     @Override
-    public UserViewDTO updateClient(Integer Id, UserUpdateDTO userUpdateDTO) {
+    public UserViewDTO updateClient(Long Id, UserUpdateDTO userUpdateDTO) {
         Client client=userRepository.findById(Id).orElseThrow(()-> new ClientNotFoundException(Id));
         client.setName(userUpdateDTO.getName());
         client.setLastName(userUpdateDTO.getLastName());
@@ -50,7 +53,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public UserViewDTO deleteClient(Integer Id) {
+    public UserViewDTO deleteClient(Long Id) {
         Client client = userRepository.findById(Id).orElseThrow(() -> new ClientNotFoundException(Id));
         // otomatik olarak isPresent i kontrol ediyor true ise get ile veriyi alıyor direk kasi halde exp fırlatıyor.
         client.setActive(false);
@@ -68,10 +71,8 @@ public class UserServiceImp implements UserService {
         return UserViewDTO.of(client);
     }
 
-    @Override
-    public List<UserViewDTO> getClientList() {
-       return userRepository.findAll().stream().filter(x->x.isActive()==true).map(UserViewDTO::of).collect(Collectors.toList());
+    public Client findCustomerByIdentityNo(String citizenId){
+        return userRepository.findClientByCitizenId(citizenId);
     }
-
 
 }

@@ -12,14 +12,13 @@ import java.time.LocalDate;
 //        @UniqueConstraint(columnNames = {"citizenId"},name = "ux_citizen_id")})
 @Data
 @RequiredArgsConstructor
-
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
     @Column(name="citizen_id",nullable = false,length = 11)
-    private Long citizenId;
+    private String citizenId;
 
     @Column(name="name",nullable = false,length = 50)
     private String name;
@@ -31,16 +30,16 @@ public class Client {
     private String phoneNumber;
 
     @Column(name="income")
-    private Integer income;
+    private Double income;
 
     @Column(name="deposit")
-    private Integer deposit;
+    private Double deposit;
 
     @Column(name="birth_date")
     private LocalDate birthDate;
 
-    @Column(name="credit_score")
-    private int creditScore;
+//    @Column(name="credit_score")
+//    private int creditScore;
 
     @Column(name="is_active")
     private boolean isActive=true;

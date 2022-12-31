@@ -9,7 +9,7 @@ public class UserUpdateDTO {
     private String name;
     private String lastName;
     private String phoneNumber;
-    private Integer income;
-    private Integer deposit;
+    private Double income;
+    private Double deposit;
 
 }
