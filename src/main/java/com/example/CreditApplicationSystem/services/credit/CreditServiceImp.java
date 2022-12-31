@@ -16,7 +16,6 @@ public class CreditServiceImp implements CreditService {
 
     private final CreditRepository creditRepository;
     private final UserServiceImp userServiceImp;
-    private final GivenCreditType givenCredit;
 
     public static Integer getCreditScoreCalculate(String citizenId){
         Integer score=(int) (Math.random()*1500);
@@ -67,7 +66,6 @@ public class CreditServiceImp implements CreditService {
       }
         return type.getGivenCreditLimit(income,deposit);
     }
-
 
     public Credit findCreditByClient(Client client){
         return creditRepository.findCreditByClient(client);
