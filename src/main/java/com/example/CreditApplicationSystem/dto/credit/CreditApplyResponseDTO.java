@@ -9,10 +9,12 @@ import java.math.BigDecimal;
 @Data
 public class CreditApplyResponseDTO {
     private Client client;
-    private BigDecimal creditLimit;
+    private Double creditLimit;
     private Response creditStatus;
 
-    public CreditApplyResponseDTO(Response creditStatus){
+    public CreditApplyResponseDTO(Client client,Double creditLimit,Response creditStatus){
+        this.client=client;
+        this.creditLimit=creditLimit;
         this.creditStatus=creditStatus;
     }
 }

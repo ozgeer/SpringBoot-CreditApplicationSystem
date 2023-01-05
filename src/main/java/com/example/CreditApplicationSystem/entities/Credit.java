@@ -20,7 +20,7 @@ public class Credit {
     private Client client;
 
     @Column(name="credit_limit")
-    private BigDecimal creditLimit;
+    private Double creditLimit;
 
     @Column(name= "income",nullable = false)
     private Double income;

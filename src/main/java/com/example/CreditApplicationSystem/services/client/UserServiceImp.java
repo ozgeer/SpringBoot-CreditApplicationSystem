@@ -31,10 +31,7 @@ public class UserServiceImp implements UserService {
         client.setName(userCreateDTO.getName());
         client.setLastName(userCreateDTO.getLastName());
         client.setPhoneNumber(userCreateDTO.getPhoneNumber());
-        client.setIncome(userCreateDTO.getIncome());
-        client.setDeposit(userCreateDTO.getDeposit());
         client.setBirthDate(userCreateDTO.getBirthDate());
-//        client.setCreditScore(UserServiceImp.getCreditScoreCalculate(userCreateDTO.getCitizenId()));
         userRepository.save(client);
         return UserViewDTO.of(client);
     }
@@ -45,8 +42,6 @@ public class UserServiceImp implements UserService {
         Client client=userRepository.findById(Id).orElseThrow(()-> new ClientNotFoundException(Id));
         client.setName(userUpdateDTO.getName());
         client.setLastName(userUpdateDTO.getLastName());
-        client.setIncome(userUpdateDTO.getIncome());
-        client.setDeposit(userUpdateDTO.getDeposit());
         client.setPhoneNumber(userUpdateDTO.getPhoneNumber());
         final Client updatedClient=userRepository.save(client);
         return UserViewDTO.of(updatedClient);

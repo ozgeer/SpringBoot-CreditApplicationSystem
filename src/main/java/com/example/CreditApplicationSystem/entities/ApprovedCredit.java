@@ -1,5 +1,6 @@
 package com.example.CreditApplicationSystem.entities;
 
+import com.example.CreditApplicationSystem.constants.Response;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -24,17 +25,17 @@ public class ApprovedCredit {
     private Credit credit;
 
     @Column(name="credit_limit")
-    private BigDecimal creditLimit;
+    private Double creditLimit;
 
     @Column(name= "income",nullable = false)
-    private BigDecimal income;
+    private Double income;
 
     @Column(name= "deposit")
-    private BigDecimal deposit;
+    private Double deposit;
 
     @Column(name="credit_score")
     private Integer creditScore;
 
     @Column(name="credit_status")
-    private boolean creditStatus=true;
+    private Response creditStatus;
 }
