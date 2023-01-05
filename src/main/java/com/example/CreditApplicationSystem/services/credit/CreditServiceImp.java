@@ -53,7 +53,6 @@ public class CreditServiceImp implements CreditService {
         CreditApplyResponseDTO response = getCreditLimit(client, creditScore, income, deposit);
         updateCreditTable(response);
         return response;
-
     }
 
     public CreditApplyResponseDTO getCreditLimit(Client client, Integer creditScore, Double income, Double deposit) {
