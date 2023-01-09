@@ -32,5 +32,6 @@ public class Credit {
     private Integer creditScore;
 
     @Column(name="credit_status")
+//    @Enumerated(EnumType.STRING)
     private Response creditStatus;
 }
