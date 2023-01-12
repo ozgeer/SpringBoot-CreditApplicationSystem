@@ -4,7 +4,6 @@ import com.example.CreditApplicationSystem.constants.Response;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "Credit")
