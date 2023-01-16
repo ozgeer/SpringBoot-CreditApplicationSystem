@@ -1,7 +1,7 @@
-##SpringBoot-CreditApplicationSystem
+SpringBoot-CREDITAPPLICATONSYSTEM
 A simulation was done for credit apply.
 
-###About The Proje
+ABOUT THE PROJECT
 * New customer can saved with citizen credentials to the system.
 * Information of available customer can updated on the system.
 * Active customers can be transformed to the inactive state.
@@ -9,7 +9,7 @@ A simulation was done for credit apply.
 * A credit application can be inquired with just a citizen number.The result that is approved or not is shown on the screen. If it is approved credit limit also is shown.
 * Swagger documentation has been prepared.
 
-###Built With
+BUILT WITH
 * Java 17
 * Spring Boot
 * PostreSql
