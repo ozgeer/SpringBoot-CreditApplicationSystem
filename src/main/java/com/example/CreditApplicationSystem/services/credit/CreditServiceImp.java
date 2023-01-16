@@ -7,24 +7,19 @@ import com.example.CreditApplicationSystem.entities.Client;
 import com.example.CreditApplicationSystem.entities.Credit;
 import com.example.CreditApplicationSystem.repository.ApprovedCreditRepository;
 import com.example.CreditApplicationSystem.repository.CreditRepository;
-import com.example.CreditApplicationSystem.services.client.UserServiceImp;
+import com.example.CreditApplicationSystem.services.client.UserService;
 import com.example.CreditApplicationSystem.services.givencredit.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.math.BigDecimal;
-
-
 @Service
 @RequiredArgsConstructor
 @Controller
 public class CreditServiceImp implements CreditService {
 
     private final CreditRepository creditRepository;
-    private final UserServiceImp userServiceImp;
+    private final UserService userService;
     private final ApprovedCreditRepository approvedCreditRepository;
 
     public static Integer getCreditScoreCalculate(String citizenId) {
@@ -43,7 +38,7 @@ public class CreditServiceImp implements CreditService {
     }
 
     public CreditApplyResponseDTO creditApplyEvaluation(@RequestBody String citizenId) {
-        Client client = userServiceImp.findCustomerByIdentityNo(citizenId);
+        Client client = userService.findCustomerByIdentityNo(citizenId);
         Credit credit = creditRepository.findCreditByClient(client);
 
         Double deposit = credit.getDeposit();
