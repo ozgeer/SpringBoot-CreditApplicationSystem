@@ -1,4 +1,4 @@
-# SpringBoot-CREDITAPPLICATONSYSTEM
+# SpringBoot-CREDIT APPLICATON SYSTEM
 
 A simulation was done for credit apply.
 
